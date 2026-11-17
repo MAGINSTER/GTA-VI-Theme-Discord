@@ -22,7 +22,7 @@ class ThemeVariant:
 
 VARIANTS: dict[str, ThemeVariant] = {
     "betterdiscord": ThemeVariant(
-        filename="ViceCity.theme.css",
+        filename="ViceCity-BetterDiscord.theme.css",
         author="Rockstar Games / Discord (Saved for BetterDiscord)",
         description=(
             "Permanent BetterDiscord preservation of Discord's limited-time Vice City "
@@ -108,12 +108,12 @@ def build_themes(install_bd: bool = False, install_vencord: bool = False) -> dic
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build ViceCity.theme.css (BetterDiscord) and ViceCity-Vencord.theme.css (Vencord)."
+        description="Build ViceCity-BetterDiscord.theme.css and ViceCity-Vencord.theme.css."
     )
     parser.add_argument(
         "--install",
         action="store_true",
-        help="Also copy ViceCity.theme.css into %%APPDATA%%\\BetterDiscord\\themes.",
+        help="Also copy ViceCity-BetterDiscord.theme.css into %%APPDATA%%\\BetterDiscord\\themes.",
     )
     parser.add_argument(
         "--install-vencord",

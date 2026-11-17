@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TARGETS = (
-    ROOT / "ViceCity.theme.css",
+    ROOT / "ViceCity-BetterDiscord.theme.css",
     ROOT / "ViceCity-Vencord.theme.css",
 )
 
