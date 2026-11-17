@@ -1,0 +1,477 @@
+__HEADER_BLOCK__
+
+/* ============================================================================
+ * 1. Vice City (HEXAGON) Color Palette & Gradient Variables
+ *    Exact values extracted from Discord's HEXAGON client theme preset (ID 23)
+ * ============================================================================ */
+
+:root {
+    --custom-theme-background: linear-gradient(135deg, #4645ff 0%, #af01f3 33.33%, #ff6698 66.67%, #f89a03 100%);
+    --custom-theme-primary-color: #4645ff;
+    --custom-theme-secondary-color: #f89a03;
+    --custom-background-gradient-opacity-multiplier: 0.8;
+
+    --custom-theme-base-color-amount: 50% !important;
+    --custom-theme-text-color-amount: 38% !important;
+    --custom-theme-base-color-light-hsl: 36.470588235294095 100% 90%;
+    --custom-theme-base-color-light: rgb(255, 235, 204);
+    --custom-theme-text-color-light: rgb(1, 0, 128);
+    --custom-theme-base-color-dark-hsl: 240 100% 5.098039215686274%;
+    --custom-theme-base-color-dark: rgb(0, 0, 26);
+    --custom-theme-text-color-dark: rgb(255, 245, 229);
+
+    --custom-background-gradient-lowest-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-lower-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-low-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-high-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-higher-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-chat-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-app-frame-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-highest-color: var(--custom-background-gradient-color);
+    --custom-background-gradient-cover: fixed 0 0 / cover, var(--custom-theme-background) fixed 0 0 / cover;
+
+    --background-gradient-lowest: linear-gradient(rgb(var(--custom-background-gradient-lowest-color) / var(--custom-background-gradient-lowest-opacity)), rgb(var(--custom-background-gradient-lowest-color) / var(--custom-background-gradient-lowest-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-lower: linear-gradient(rgb(var(--custom-background-gradient-lower-color) / var(--custom-background-gradient-lower-opacity)), rgb(var(--custom-background-gradient-lower-color) / var(--custom-background-gradient-lower-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-low: linear-gradient(rgb(var(--custom-background-gradient-low-color) / var(--custom-background-gradient-low-opacity)), rgb(var(--custom-background-gradient-low-color) / var(--custom-background-gradient-low-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-high: linear-gradient(rgb(var(--custom-background-gradient-high-color) / var(--custom-background-gradient-high-opacity)), rgb(var(--custom-background-gradient-high-color) / var(--custom-background-gradient-high-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-higher: linear-gradient(rgb(var(--custom-background-gradient-higher-color) / var(--custom-background-gradient-higher-opacity)), rgb(var(--custom-background-gradient-higher-color) / var(--custom-background-gradient-higher-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-chat: linear-gradient(rgb(var(--custom-background-gradient-chat-color) / var(--custom-background-gradient-opacity-chat)), rgb(var(--custom-background-gradient-chat-color) / var(--custom-background-gradient-opacity-chat))) var(--custom-background-gradient-cover);
+    --background-gradient-app-frame: linear-gradient(rgb(var(--custom-background-gradient-app-frame-color) / var(--custom-background-gradient-opacity-app-frame)), rgb(var(--custom-background-gradient-app-frame-color) / var(--custom-background-gradient-opacity-app-frame))) var(--custom-background-gradient-cover);
+    --background-gradient-highest: linear-gradient(rgb(var(--custom-background-gradient-highest-color) / var(--custom-background-gradient-highest-opacity)), rgb(var(--custom-background-gradient-highest-color) / var(--custom-background-gradient-highest-opacity))) var(--custom-background-gradient-cover);
+    --background-gradient-chat-preview: linear-gradient(rgb(var(--custom-background-gradient-chat-color) / var(--custom-background-gradient-opacity-chat)), rgb(var(--custom-background-gradient-chat-color) / var(--custom-background-gradient-opacity-chat))), var(--custom-theme-background);
+}
+
+@supports (color: color-mix(in lch, red, blue)) {
+    :root {
+        --custom-app-border-frame-base: color-mix(in oklab, var(--custom-theme-primary-color) 50%, var(--custom-theme-secondary-color) 50%);
+        --app-border-frame: color-mix(in oklab, var(--custom-app-border-frame-base) 24%, var(--border-subtle) 100%);
+    }
+}
+
+/* Ensure Settings, Context Menus & Popouts (.disable-adaptive-theme / .reduce-adaptive-theme) keep Vice City tint */
+:root:not(#_),
+.disable-adaptive-theme:not(#_),
+.reduce-adaptive-theme:not(#_) {
+    --custom-theme-base-color-amount: 50% !important;
+    --custom-theme-text-color-amount: 38% !important;
+}
+
+/* Dark mode / Darker / Midnight (Vice City's native mode is Dark / Darker) */
+:is(:root, html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) {
+    --custom-background-gradient-color: 0 0 0;
+    --custom-background-gradient-opacity-chat: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.8), 1);
+    --custom-background-gradient-highest-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.65), 1);
+    --custom-background-gradient-lowest-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.9), 1);
+    --custom-background-gradient-lower-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.85), 1);
+    --custom-background-gradient-low-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.8), 1);
+    --custom-background-gradient-high-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.75), 1);
+    --custom-background-gradient-higher-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.7), 1);
+    --custom-background-gradient-opacity-app-frame: var(--custom-background-gradient-higher-opacity);
+
+    --custom-theme-base-color: var(--custom-theme-base-color-dark) !important;
+    --custom-theme-text-color: var(--custom-theme-text-color-dark) !important;
+    --custom-theme-base-color-hsl: var(--custom-theme-base-color-dark-hsl) !important;
+}
+
+__TOKENS_CSS__
+
+/* Light mode fallback (in case Per-Mode Theming / Light mode is active) */
+html.theme-light,
+.theme-light {
+    --custom-background-gradient-color: 255 255 255;
+    --custom-background-gradient-highest-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.95), 1);
+    --custom-background-gradient-opacity-chat: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.85), 1);
+    --custom-background-gradient-lowest-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.85), 1);
+    --custom-background-gradient-lower-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.8), 1);
+    --custom-background-gradient-low-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.75), 1);
+    --custom-background-gradient-high-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.7), 1);
+    --custom-background-gradient-higher-opacity: clamp(0, calc(var(--custom-background-gradient-opacity-multiplier, 1) * 0.65), 1);
+    --custom-background-gradient-opacity-app-frame: var(--custom-background-gradient-higher-opacity);
+
+    --custom-theme-base-color: var(--custom-theme-base-color-light);
+    --custom-theme-text-color: var(--custom-theme-text-color-light);
+    --custom-theme-base-color-hsl: var(--custom-theme-base-color-light-hsl);
+}
+
+/* ============================================================================
+ * 2. Vice City Top-Left Home Button Icon (HexagonIcon)
+ *    Embedded offline WebP data URI from Discord's 236f9310543771ae.webp
+ * ============================================================================ */
+
+[data-guilds-bar-home="true"] [class*="childWrapper_"] {
+    background-image: url("data:image/webp;base64,__ICON_B64__") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+}
+
+[data-guilds-bar-home="true"] [class*="childWrapper_"] > svg,
+[data-guilds-bar-home="true"] [class*="childWrapper_"] > img {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ============================================================================
+ * 3. Discord Built-in .custom-theme-background Rules
+ *    Applied unconditionally so the theme works after Discord removes the promo
+ * ============================================================================ */
+
+/* Scrollbar track */
+:is(.customTheme_tqapBM, [class^="customTheme_"], [class*=" customTheme_"]).auto_tqapBM::-webkit-scrollbar-track,
+:is(.customTheme_tqapBM, [class^="customTheme_"], [class*=" customTheme_"])[class*="auto_"]::-webkit-scrollbar-track {
+    background-color: var(--background-mod-muted);
+}
+
+/* Progress bars */
+.track_TPSqXu {
+    --custom-progressbar-indicator-color: var(--custom-theme-text-color);
+}
+.progressBar_K28c1O,
+:is(.progressBar_Jln_7e, [class^="progressBar_Jln"], [class*=" progressBar_Jln"]) {
+    --custom-progressbar-indicator-color: var(--background-brand);
+}
+
+/* Tooltips & Menus */
+:is(.tooltipPointer_3_v8qp, [class^="tooltipPointer_"], [class*=" tooltipPointer_"]) {
+    display: none;
+}
+:is(.tooltip_3_v8qp, [class^="tooltip_"], [class*=" tooltip_"]) {
+    border: 1px solid var(--border-strong);
+}
+.menu_M3qk4j {
+    border: 1px solid var(--border-strong);
+}
+
+/* Guilds bar, folder preview, and home button fallback */
+:is(.childWrapperNoHoverBg_JJ-hgR, [class^="childWrapperNoHoverBg_"], [class*=" childWrapperNoHoverBg_"]) {
+    background-color: var(--background-mod-strong);
+}
+.circleIconButton_g8YUxD {
+    background-color: var(--background-mod-strong);
+}
+:is(.folderPreviewWrapper_RTMSuZ, [class^="folderPreviewWrapper_"], [class*=" folderPreviewWrapper_"]) {
+    background-color: var(--custom-preview-background, var(--background-mod-strong));
+}
+:is(.tree_5dqHTG, [class^="tree_"], [class*=" tree_"]) {
+    background: var(--background-gradient-app-frame, var(--background-base-lowest));
+}
+:is(.bottomRailNotifCenterButton_5dqHTG, [class^="bottomRailNotifCenterButton_"], [class*=" bottomRailNotifCenterButton_"]) {
+    padding-top: 12px;
+}
+:is(.bottomRailNotifCenterButton_5dqHTG, [class^="bottomRailNotifCenterButton_"], [class*=" bottomRailNotifCenterButton_"])::before {
+    display: none;
+}
+
+/* Header bar, title bar & sidebar */
+.children_ybUK7Z::after {
+    content: unset;
+}
+:is(.withBackgroundOverride_gnMEnp, [class^="withBackgroundOverride_"], [class*=" withBackgroundOverride_"]) {
+    background: var(--background-gradient-app-frame, var(--background-base-lowest));
+}
+:is(.withBackgroundOverride_gnMEnp, [class^="withBackgroundOverride_"], [class*=" withBackgroundOverride_"]).typeWindows_gnMEnp {
+    margin-top: 0;
+    padding-top: 4px;
+}
+.theme-dark :is(.containerSidenav_XtY2mm, [class^="containerSidenav_"], [class*=" containerSidenav_"]),
+.theme-light :is(.containerSidenav_XtY2mm, [class^="containerSidenav_"], [class*=" containerSidenav_"]) {
+    background: inherit;
+}
+.theme-dark :is(.themedHeaderMobile_u88IQl, [class^="themedHeaderMobile_"], [class*=" themedHeaderMobile_"]) {
+    background: var(--background-gradient-high, var(--background-base-lower));
+}
+.theme-dark :is(.themedSearchBarMobile_u88IQl, [class^="themedSearchBarMobile_"], [class*=" themedSearchBarMobile_"]) {
+    background: var(--background-gradient-low, var(--background-base-lower));
+}
+.theme-light :is(.themedHeaderMobile_u88IQl, [class^="themedHeaderMobile_"], [class*=" themedHeaderMobile_"]) {
+    background: var(--background-gradient-low, var(--background-base-lower));
+}
+.theme-light :is(.themedSearchBarMobile_u88IQl, [class^="themedSearchBarMobile_"], [class*=" themedSearchBarMobile_"]) {
+    background: var(--background-gradient-lower, var(--background-base-lower));
+}
+.sidebar_pog62O::after {
+    display: none;
+}
+:is(.panels_pog62O, [class^="panels_"], [class*=" panels_"]) {
+    border-color: var(--app-frame-border);
+}
+
+/* Chat input, reply/thread/scheduled bars, dividers, embeds & code */
+:is(.channelTextArea_2x8-Qn, [class^="channelTextArea_"], [class*=" channelTextArea_"]) {
+    background: var(--background-gradient-highest, var(--input-background-default));
+    border-color: var(--app-frame-border);
+}
+.theme-dark:not(#_):not(.theme-light) :is(.stackedBars_2x8-Qn, [class^="stackedBars_"], [class*=" stackedBars_"]) {
+    background: var(--background-gradient-lowest, var(--background-base-lower));
+}
+.theme-light :is(.stackedBars_2x8-Qn, [class^="stackedBars_"], [class*=" stackedBars_"]) {
+    background: var(--background-gradient-lower, var(--background-base-lower));
+}
+.theme-dark :is(.textAreaMobileThemed_2x8-Qn, [class^="textAreaMobileThemed_"], [class*=" textAreaMobileThemed_"]),
+.theme-light :is(.textAreaMobileThemed_2x8-Qn, [class^="textAreaMobileThemed_"], [class*=" textAreaMobileThemed_"]) {
+    margin-top: 16px;
+}
+.theme-dark:not(#_):not(.theme-light) :is(.replyBar_rE8-46, [class^="replyBar_"], [class*=" replyBar_"]),
+.theme-dark:not(#_):not(.theme-light) :is(.threadSuggestionBar_rE8-46, [class^="threadSuggestionBar_"], [class*=" threadSuggestionBar_"]) {
+    background: var(--background-gradient-lowest, var(--background-base-lower));
+}
+.theme-light :is(.replyBar_rE8-46, [class^="replyBar_"], [class*=" replyBar_"]),
+.theme-light :is(.threadSuggestionBar_rE8-46, [class^="threadSuggestionBar_"], [class*=" threadSuggestionBar_"]) {
+    background: var(--background-gradient-lower, var(--background-base-lower));
+}
+.theme-dark:not(#_):not(.theme-light) :is(.scheduledMessageBar_u2vyAM, [class^="scheduledMessageBar_"], [class*=" scheduledMessageBar_"]) {
+    background: var(--background-gradient-lowest, var(--background-base-lower));
+}
+.theme-dark:not(#_):not(.theme-light) .placeholder_SHcSVi {
+    color: color-mix(in oklab, var(--text-default) 40%, transparent);
+}
+.theme-light :is(.scheduledMessageBar_u2vyAM, [class^="scheduledMessageBar_"], [class*=" scheduledMessageBar_"]) {
+    background: var(--background-gradient-lower, var(--background-base-lower));
+}
+:is(.formWithLoadedChatInput_z_gUBg, [class^="formWithLoadedChatInput_"], [class*=" formWithLoadedChatInput_"])::before {
+    content: unset;
+}
+:is(.markup_ku1OHH, [class^="markup_"], [class*=" markup_"]) code {
+    background: color-mix(in oklab, var(--background-code) 95%, var(--white));
+}
+.divider_4TfzT5 {
+    border-top-color: var(--border-strong);
+}
+:is(.isUnread_4TfzT5, [class^="isUnread_"], [class*=" isUnread_"]) {
+    border-color: var(--divider-color);
+}
+:is(.input_-dEX_A, [class^="input_-dEX"], [class*=" input_-dEX"]) {
+    background: var(--input-background-default);
+}
+.theme-dark :is(.embedFull_XyW1ZT, [class^="embedFull_"], [class*=" embedFull_"]) {
+    --__spoiler-background-color--hidden: var(--primary-760);
+    --__spoiler-background-color--hidden--hover: hsl(var(--primary-760-hsl) / 0.8);
+}
+:is(.embedFull_XyW1ZT, [class^="embedFull_"], [class*=" embedFull_"]) {
+    background-color: var(--background-mod-subtle);
+}
+:is(.file_-9z-XO, [class^="file_"], [class*=" file_"]) {
+    background-color: var(--background-mod-subtle);
+    border-color: var(--border-subtle);
+}
+
+/* Reactions */
+.reaction_MmKct8 {
+    background-color: var(--background-mod-subtle);
+    border-color: var(--border-strong);
+}
+.reaction_MmKct8.reactionMe_MmKct8 {
+    background-color: hsla(var(--brand-500-hsl) / .15);
+    border-color: var(--brand-500);
+}
+.reaction_MmKct8.reactionMe_MmKct8 .reactionCount_MmKct8 {
+    color: var(--text-brand);
+}
+.reactionBtn_MmKct8 {
+    background-color: var(--background-mod-subtle);
+    border-color: var(--border-strong);
+}
+
+/* RTC / Voice / Activity / Game Exit / Debug Panels */
+.quickBar_y2dW7E,
+.panel_JnchWv,
+.panel_UQqFnR,
+.panel_8eCwJY,
+.panel_z264eY,
+.container_9U6LUN {
+    background: unset;
+}
+:is(.edgeFadeEnd_UQqFnR, [class^="edgeFadeEnd_"], [class*=" edgeFadeEnd_"]),
+:is(.edgeFadeStart_UQqFnR, [class^="edgeFadeStart_"], [class*=" edgeFadeStart_"]) {
+    background: unset;
+}
+:is(.floating_z264eY, [class^="floating_"], [class*=" floating_"]):is(:hover, :focus-within) .panel_z264eY {
+    background: var(--background-gradient-highest, var(--background-base-low));
+}
+:is(.buttonColor_9U6LUN, [class^="buttonColor_"], [class*=" buttonColor_"]) {
+    background: var(--background-gradient-low, var(--background-mod-subtle));
+}
+:is(.buttonColor_9U6LUN, [class^="buttonColor_"], [class*=" buttonColor_"]):hover {
+    background: var(--background-gradient-high, var(--background-mod-strong));
+}
+.container_TP1WMf,
+:is(.debugPanelStandalone_TP1WMf, [class^="debugPanelStandalone_"], [class*=" debugPanelStandalone_"]) {
+    border: 1px solid var(--border-strong);
+}
+
+/* Popouts, Modals, Forum/Topic Cards & Summaries */
+.container_rc97-L,
+.container_g2fiji {
+    background-color: var(--background-mod-subtle);
+}
+.skeletonMessage_tJSWzx,
+.bodyTint_zBOVVJ,
+.topicJumpedContainer_E31ytM {
+    background: var(--background-mod-subtle);
+}
+.root_tNLPJr {
+    background: transparent;
+}
+.backdrop_zBOVVJ {
+    background: var(--background-gradient-chat, var(--background-base-lower));
+}
+.card_zBOVVJ {
+    --custom-conversation-header-fade: var(--background-mod-subtle);
+    background: var(--background-gradient-chat, var(--background-base-lower));
+    background-attachment: fixed;
+}
+.topFade_zBOVVJ {
+    background: linear-gradient(var(--background-mod-subtle), var(--background-mod-subtle)), var(--background-gradient-chat, var(--background-surface-higher));
+    -webkit-mask-image: linear-gradient(0deg, transparent 0, #000);
+    mask-image: linear-gradient(0deg, transparent 0, #000);
+}
+.bottomFade_zBOVVJ {
+    background: linear-gradient(var(--background-mod-subtle), var(--background-mod-subtle)), var(--background-gradient-chat, var(--background-surface-higher));
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 80px, #000);
+    mask-image: linear-gradient(180deg, transparent 0, #000 80px, #000);
+}
+.topicItemJumped_E31ytM.topicItemActive_E31ytM .topicJumpedContainer_E31ytM {
+    background: var(--background-mod-strong);
+}
+.topicJumpedContainerFocused_E31ytM,
+.topicItemJumped_E31ytM.topicItemActive_E31ytM .topicJumpedContainerFocused_E31ytM {
+    background: var(--background-mod-normal);
+}
+.previewWindow_PMtXxb {
+    background: var(--background-gradient-chat, var(--background-surface-higher));
+}
+.previewWindow_PMtXxb::before {
+    background: var(--background-mod-subtle);
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+}
+.previewWindowFocused_PMtXxb::before {
+    background: var(--background-mod-normal);
+}
+.containerFocused_nVRdhK .messageMask_nVRdhK {
+    background: linear-gradient(var(--background-mod-subtle), var(--background-mod-subtle)), var(--background-gradient-chat, var(--background-surface-higher));
+}
+.outer_xhpPJp {
+    border-color: transparent;
+}
+.outer_xhpPJp::before {
+    background: var(--background-mod-subtle);
+    border: 1px solid var(--border-subtle);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    bottom: -32px;
+    content: "";
+    inset-inline-end: -1px;
+    inset-inline-start: -1px;
+    -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 32px), transparent);
+    mask-image: linear-gradient(180deg, #000 calc(100% - 32px), transparent);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+}
+.outer_xhpPJp::after {
+    content: none;
+}
+
+/* ============================================================================
+ * 4. OldCord & Layer Transparency Compatibility
+ *    Ensures gradients remain visible even if OldCord theme is enabled
+ * ============================================================================ */
+
+:is(.layer_Fd0FEH.baseLayer_Fd0FEH, [class^="baseLayer_"], [class*=" baseLayer_"]) {
+    background-color: transparent !important;
+}
+
+.container_q6l9qz {
+    border: unset;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.modal_sg1OPw, [class^="modal_"][class*="sg1OPw"]) {
+    background-color: var(--modal-background);
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.tooltipGrey_3_v8qp, [class^="tooltipGrey_"]) {
+    background-color: var(--background-surface-higher);
+}
+
+/* OldCord Member Activity Cards ("АКТИВНОСТЬ") & Friends Active Now Panel ("АКТИВНЫЕ КОНТАКТЫ") */
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.container_g7esM5, [class^="container_g7esM5"]):not(:has(.tabularNumbers_MMUIw6, [class^="tabularNumbers_"], [class*=" tabularNumbers_"])) {
+    background: var(--background-gradient-high, var(--background-surface-high)) !important;
+    border: none !important;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.container_g7esM5, [class^="container_g7esM5"]):not(:has(.tabularNumbers_MMUIw6, [class^="tabularNumbers_"], [class*=" tabularNumbers_"])):hover {
+    background: var(--background-gradient-higher, var(--background-surface-higher)) !important;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.container_g7esM5, [class^="container_g7esM5"]):not(:has(.tabularNumbers_MMUIw6, [class^="tabularNumbers_"], [class*=" tabularNumbers_"]))::before {
+    background: var(--background-gradient-higher, var(--background-surface-higher)) !important;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.popoutContentWrapper_R0WNX5, [class^="popoutContentWrapper_"]):not(:has(.tabularNumbers_MMUIw6, [class^="tabularNumbers_"], [class*=" tabularNumbers_"])) {
+    background: var(--background-gradient-higher, var(--background-surface-higher));
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.nowPlayingColumn_zrUwGA, .nowPlayingColumnFullWidth_zrUwGA, [class^="nowPlayingColumn_"]) {
+    background: var(--background-gradient-chat, var(--background-base-lower));
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.nowPlayingColumn_zrUwGA, .nowPlayingColumnFullWidth_zrUwGA, [class^="nowPlayingColumn_"]) :is(.container_GNEh_C, [class^="container_GNE"]) {
+    background: none;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.outer_ERB-Vv, [class^="outer_ERB"]) {
+    background: var(--background-gradient-higher, var(--background-surface-high));
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.outer_ERB-Vv, [class^="outer_ERB"]):is(.active_ERB-Vv, .interactive_ERB-Vv:hover, [class*="active_ERB"], [class*="interactive_ERB"]:hover) {
+    background: var(--background-gradient-highest, var(--background-surface-higher));
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.wrapper_o3hXTo, [class^="wrapper_o3h"]) {
+    background: var(--background-gradient-higher, var(--background-surface-high));
+    border: 1px solid var(--border-subtle);
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.inset_ERB-Vv, .section_o3hXTo, .emptyCard_-7KzVR) {
+    background: var(--background-mod-subtle);
+    border-color: var(--border-subtle);
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.sortDropdown_BkGrJJ, .tagsButton_BkGrJJ, .isOpen_SOY5H6, .isOpen_x1LvFB) {
+    background: var(--background-gradient-high, var(--background-surface-high)) !important;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.sortDropdown_BkGrJJ, .tagsButton_BkGrJJ):hover {
+    background: var(--background-gradient-higher, var(--background-surface-higher)) !important;
+}
+
+:is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.base_pog62O .sidebar_pog62O, .vc-betterFolders-sidebar) > :is(.wrapper_5dqHTG, [class^="wrapper_5dq"]) {
+    background: var(--background-gradient-app-frame, var(--background-base-lowest));
+}
+
+/* Keep OldCord's fixed systemBar (shown in Settings) transparent so it never paints a strip over the top bar / DISCORD wordmark */
+:root:not(#_) :is(.systemBar_3zSH5d, [class^="systemBar_"]) {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove dark border/halo added by OldCord around server, folder & unread DM notification badges */
+:root:not(#_) :is(.lowerBadge_hqZPsU, [class^="lowerBadge_"]) {
+    border: none !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+:root:not(#_) :is(.upperBadge_hqZPsU, [class^="upperBadge_"]) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
