@@ -424,6 +424,10 @@ html.theme-light,
     background: none;
 }
 
+:root:not(#_) :is(.nowPlayingColumn_zrUwGA, .nowPlayingColumnFullWidth_zrUwGA, [class^="nowPlayingColumn_"]) :is(.scroller_GNEh_C, [class^="scroller_GNE"]):not(.standalone_GNEh_C, [class*="standalone_GNE"]) {
+    border-inline-start: 1px solid var(--border-subtle);
+}
+
 :is(html.theme-dark, html.theme-darker, html.theme-midnight, .theme-dark, .theme-darker, .theme-midnight):not(#_):not(.theme-light) :is(.outer_ERB-Vv, [class^="outer_ERB"]) {
     background: var(--background-gradient-higher, var(--background-surface-high));
 }
