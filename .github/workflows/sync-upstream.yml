@@ -1,3 +1,4 @@
+# Keeps the sync workflow registered in GitHub Actions.
 name: Sync upstream repository
 
 on:
