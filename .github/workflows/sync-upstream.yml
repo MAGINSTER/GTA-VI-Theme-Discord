@@ -20,6 +20,7 @@ jobs:
       BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
       CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
       GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+      MOSHUB_TOKEN: ${{ secrets.MOSHUB_TOKEN }}
     steps:
       - name: Checkout destination
         uses: actions/checkout@v4
@@ -68,6 +69,17 @@ jobs:
         run: |
           git remote add gitea "https://MAGINSTER:${GITEA_TOKEN}@gitea.com/MAGINSTER/GTA-VI-Theme-Discord.git"
           git push gitea HEAD:main
+
+      - name: Push synchronized commit to MosHub
+        if: ${{ env.MOSHUB_TOKEN != '' }}
+        run: |
+          git remote add moshub "https://oauth2:${MOSHUB_TOKEN}@hub.mos.ru/MAGINSTER/GTA-VI-Theme-Discord.git"
+          git push moshub HEAD:main
+
+      - name: Explain missing MosHub token
+        if: ${{ env.MOSHUB_TOKEN == '' }}
+        run: |
+          echo "MosHub push skipped: add MOSHUB_TOKEN in repository Actions secrets."
 
       - name: Explain missing Gitea token
         if: ${{ env.GITEA_TOKEN == '' }}
