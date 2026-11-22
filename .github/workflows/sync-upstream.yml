@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
+      CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
     steps:
       - name: Checkout destination
         uses: actions/checkout@v4
@@ -54,6 +55,17 @@ jobs:
         run: |
           git remote add bitbucket "https://x-token-auth:${BITBUCKET_TOKEN}@bitbucket.org/maginster/gta-vi-theme-discord.git"
           git push bitbucket HEAD:main
+
+      - name: Push synchronized commit to Codeberg
+        if: ${{ env.CODEBERG_TOKEN != '' }}
+        run: |
+          git remote add codeberg "https://MAGINSTER:${CODEBERG_TOKEN}@codeberg.org/MAGINSTER/GTA-VI-Themes-Discord.git"
+          git push codeberg HEAD:main
+
+      - name: Explain missing Codeberg token
+        if: ${{ env.CODEBERG_TOKEN == '' }}
+        run: |
+          echo "Codeberg push skipped: add CODEBERG_TOKEN in repository Actions secrets."
 
       - name: Explain missing Bitbucket token
         if: ${{ env.BITBUCKET_TOKEN == '' }}
