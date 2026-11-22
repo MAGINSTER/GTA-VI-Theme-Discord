@@ -19,6 +19,7 @@ jobs:
     env:
       BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
       CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+      GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
     steps:
       - name: Checkout destination
         uses: actions/checkout@v4
@@ -61,6 +62,17 @@ jobs:
         run: |
           git remote add codeberg "https://MAGINSTER:${CODEBERG_TOKEN}@codeberg.org/MAGINSTER/GTA-VI-Themes-Discord.git"
           git push codeberg HEAD:main
+
+      - name: Push synchronized commit to Gitea
+        if: ${{ env.GITEA_TOKEN != '' }}
+        run: |
+          git remote add gitea "https://MAGINSTER:${GITEA_TOKEN}@gitea.com/MAGINSTER/GTA-VI-Theme-Discord.git"
+          git push gitea HEAD:main
+
+      - name: Explain missing Gitea token
+        if: ${{ env.GITEA_TOKEN == '' }}
+        run: |
+          echo "Gitea push skipped: add GITEA_TOKEN in repository Actions secrets."
 
       - name: Explain missing Codeberg token
         if: ${{ env.CODEBERG_TOKEN == '' }}
