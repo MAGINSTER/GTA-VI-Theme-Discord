@@ -57,4 +57,5 @@ jobs:
 
       - name: Explain missing Bitbucket token
         if: ${{ env.BITBUCKET_TOKEN == '' }}
-        run: echo "Bitbucket push skipped: add BITBUCKET_TOKEN in repository Actions secrets."
+        run: |
+          echo "Bitbucket push skipped: add BITBUCKET_TOKEN in repository Actions secrets."
