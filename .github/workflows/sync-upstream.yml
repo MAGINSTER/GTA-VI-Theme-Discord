@@ -45,3 +45,15 @@ jobs:
           git add -A
           git commit -m "chore: sync from Vice-City-Theme-Preservation"
           git push origin HEAD:main
+
+      - name: Push synchronized commit to Bitbucket
+        if: ${{ secrets.BITBUCKET_TOKEN != '' }}
+        env:
+          BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
+        run: |
+          git remote add bitbucket "https://x-token-auth:${BITBUCKET_TOKEN}@bitbucket.org/maginster/gta-vi-theme-discord.git"
+          git push bitbucket HEAD:main
+
+      - name: Explain missing Bitbucket token
+        if: ${{ secrets.BITBUCKET_TOKEN == '' }}
+        run: echo "Bitbucket push skipped: add BITBUCKET_TOKEN in repository Actions secrets."
